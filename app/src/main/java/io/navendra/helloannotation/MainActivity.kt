@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        Log.d(TAG,"Hello ${Generated_Hello().greeting}")
+        Log.d(TAG,"Hello ${Generated_Hello().greeting()}")
     }
 
 

@@ -16,7 +16,7 @@ class KotlinClassBuilder(private val name: String,
     private val endBlockControl = "}"
 
 
-    private val methodBuilderString = "\nfun greeting() $startBlockControl \nreturn $greeting \n$endBlockControl"
+    private val methodBuilderString = "\nfun greeting() : String $startBlockControl \nreturn \"$greeting\" \n$endBlockControl"
 
     fun getContent() : String{
         val builderString = "$packageString" +

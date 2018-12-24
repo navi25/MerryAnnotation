@@ -1,14 +1,16 @@
 package io.navendra.codegen
 
+import com.google.auto.service.AutoService
 import io.navendra.annotation.GreetingGenerator
 import io.navendra.codegen.simplePoet.KotlinClassBuilder
 import java.io.File
-import javax.annotation.processing.AbstractProcessor
-import javax.annotation.processing.RoundEnvironment
+import javax.annotation.processing.*
 import javax.lang.model.SourceVersion
 import javax.lang.model.element.TypeElement
 
-
+@AutoService(Processor::class) // For registering the service
+@SupportedSourceVersion(SourceVersion.RELEASE_8) // to support Java 8
+@SupportedOptions(FileGenerator.KAPT_KOTLIN_GENERATED_OPTION_NAME)
 class FileGenerator : AbstractProcessor(){
 
     override fun getSupportedAnnotationTypes(): MutableSet<String> {
@@ -33,7 +35,7 @@ class FileGenerator : AbstractProcessor(){
 
     private fun generateClass(className: String, pack: String){
         val fileName = "Generated_$className"
-        val fileContent = KotlinClassBuilder(className,pack).getContent()
+        val fileContent = KotlinClassBuilder(fileName,pack).getContent()
 
         val kaptKotlinGeneratedDir = processingEnv.options[KAPT_KOTLIN_GENERATED_OPTION_NAME]
         val file = File(kaptKotlinGeneratedDir, "$fileName.kt")
