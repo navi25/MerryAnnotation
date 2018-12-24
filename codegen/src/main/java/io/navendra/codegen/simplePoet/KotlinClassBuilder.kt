@@ -6,25 +6,22 @@ package io.navendra.codegen.simplePoet
  * Use KotlinPoet for production app
  * KotlinPoet can be found at https://github.com/square/kotlinpoet
  */
-class KotlinClassBuilder(private val name: String,
-                         private val pack:String,
-                         private val greeting:String = "Merry Christmas!!"){
+class KotlinClassBuilder(className: String,
+                         packageName:String,
+                         greeting:String = "Merry Christmas!!"){
 
-    private val packageString = "package $pack"
-    private val classString = "\nclass $name "
-    private val startBlockControl = "{"
-    private val endBlockControl = "}"
+    private val contentTemplate = """
+        package $packageName
 
+        class $className {
+             fun greeting() = "$greeting"
+        }
 
-    private val methodBuilderString = "\nfun greeting() : String $startBlockControl \nreturn \"$greeting\" \n$endBlockControl"
+    """.trimIndent()
 
     fun getContent() : String{
-        val builderString = "$packageString" +
-                "\n$classString $startBlockControl" +
-                "$methodBuilderString" +
-                "$endBlockControl"
 
-        return builderString
+        return contentTemplate
 
     }
 
