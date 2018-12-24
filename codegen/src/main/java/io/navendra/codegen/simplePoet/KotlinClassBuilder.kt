@@ -8,7 +8,7 @@ package io.navendra.codegen.simplePoet
  */
 class KotlinClassBuilder(private val name: String,
                          private val pack:String,
-                         private val greeting:String = "World"){
+                         private val greeting:String = "Merry Christmas!!"){
 
     private val packageString = "package $pack"
     private val classString = "\nclass $name "

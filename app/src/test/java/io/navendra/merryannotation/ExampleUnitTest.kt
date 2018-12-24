@@ -1,4 +1,4 @@
-package io.navendra.helloannotation
+package io.navendra.merryannotation
 
 import org.junit.Test
 

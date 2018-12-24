@@ -1,22 +1,22 @@
-package io.navendra.helloannotation
+package io.navendra.merryannotation
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import io.navendra.annotation.GreetingGenerator
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     val TAG = MainActivity::class.java.simpleName
 
     @GreetingGenerator
-    class Hello
+    class Santa
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        Log.d(TAG,"Hello ${Generated_Hello().greeting()}")
+        val textView = greetingView
+        textView.text = Generated_Santa().greeting()
     }
 
 

@@ -1,4 +1,4 @@
-package io.navendra.helloannotation
+package io.navendra.merryannotation
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
